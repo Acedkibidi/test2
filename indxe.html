@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triple T</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #bigButton {
+            font-size: 48px;
+            padding: 30px 60px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #bigButton:hover {
+            background-color: #45a049;
+            transform: scale(1.03);
+        }
+
+        #displayArea {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #displayImage {
+            max-width: 300px;
+            display: none;
+            margin-top: 20px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="bigButton" onclick="showContent()">pinduta daw ko</button>
+        <div id="displayArea"></div>
+        <img id="displayImage" src="IMAGES/me when.jpg" alt="Your Image">
+    </div>
+
+    <script>
+        let clickCount = 0;
+
+        const states = [
+            {
+                text: 'Pinduta balik kung gwapo ka',
+                image: 'IMAGES/me%20when.jpg',
+                background: '#ffeb3b',
+                buttonText: 'Testingi ko'
+            },
+            {
+                text: 'gwapo diay ka',
+                image: 'IMAGEs/parasyte-lock-in.gif',
+                background: '#bde0fe',
+                buttonText: 'yes'
+            },
+            {
+                text: 'pilingon bata-a',
+                image: 'IMAGES/mingming.jpg',
+                background: '#d4f0dc',
+                buttonText: 'pinduta'
+            }
+        ];
+
+        function showContent() {
+            const displayArea = document.getElementById('displayArea');
+            const displayImage = document.getElementById('displayImage');
+            const button = document.getElementById('bigButton');
+
+            const state = states[clickCount];
+
+            displayArea.innerHTML = `<p>${state.text}</p>`;
+            displayImage.src = state.image;
+            displayImage.style.display = 'block';
+            document.body.style.backgroundColor = state.background;
+            button.textContent = state.buttonText;
+
+            clickCount = (clickCount + 1) % states.length;
+        }
+    </script>
+</body>
+</html>
